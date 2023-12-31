@@ -1,0 +1,21 @@
+.label {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  font-weight: 500;
+  font-style: italic;
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+.input {
+  padding: 8px;
+  font-size: 20px;
+  margin-bottom: 25px;
+  text-align: center;
+  border-radius: 10px;
+  border: 1px solid indigo;
+  background-color: white;
+}
+.input:focus {
+  box-shadow: rgb(38, 57, 77) 0px 5px 15px -2px;
+}
