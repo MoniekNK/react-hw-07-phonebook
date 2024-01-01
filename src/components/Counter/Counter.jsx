@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { selectContactsCount } from '../../redux/contactsSlice';
 
-export const ContactsCounter = () => {
+export const Counter = () => {
   const count = useSelector(selectContactsCount);
 
   return (

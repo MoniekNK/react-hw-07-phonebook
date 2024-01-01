@@ -26,7 +26,6 @@ const ContactForm = () => {
       return;
     }
 
-    // Dodanie kontaktu do Redux Store
     const newContact = {
       id: nanoid(),
       name: name,
@@ -35,7 +34,6 @@ const ContactForm = () => {
 
     dispatch(addContact(newContact));
 
-    // Resetowanie formularza po dodaniu kontaktu
     form.reset();
   };
 

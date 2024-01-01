@@ -1,30 +1,42 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { selectFilteredContacts } from '../../redux/selectors';
-import { deleteContact } from '../../redux/operations';
+import { useSelector, useDispatch } from 'react-redux';
 import css from './ContactList.module.css';
+import { selectContacts, selectFilter } from '../../redux/selectors';
+import { deleteContact } from '../../redux/actions';
 
-export const ContactList = () => {
+const ContactList = () => {
   const dispatch = useDispatch();
+  const contacts = useSelector(selectContacts);
+  const filter = useSelector(selectFilter);
 
-  const filteredContacts = useSelector(selectFilteredContacts);
+  const handleDeleteContact = id => {
+    dispatch(deleteContact(id));
+  };
+
+  const filteredContacts = contacts.filter(contact =>
+    contact.name.toLowerCase().includes(filter.toLowerCase())
+  );
 
   return (
-    <ul className={filteredContacts.length ? css.contactList : css.emptyList}>
-      {filteredContacts.map(contact => (
-        <li key={contact.id} className={css.contactList__item}>
-          <div className={css.contactInfo}>
-            <strong>{contact.name}:</strong>
-            <span className={css.contactNumber}>{contact.number}</span>
-          </div>
-          <button
-            type="button"
-            className={css.deleteButton}
-            onClick={() => dispatch(deleteContact(contact.id))}
-          >
-            Delete
-          </button>
-        </li>
-      ))}
-    </ul>
+    <div className={css.contacts}>
+      <p>Znajdź kontakt po nazwie</p>
+      <ul className={css.contactsList}>
+        {filteredContacts.map(({ id, name, number }) => (
+          <li className={css.contactsItem} key={id}>
+            <p className={css.contactsName}>{name}</p>
+            <p className={css.contactsNumber}>{number}</p>
+            <button
+              onClick={() => {
+                handleDeleteContact(id);
+              }}
+              className={css.contactsBtn}
+            >
+              Usuń
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
+
+export default ContactList;
