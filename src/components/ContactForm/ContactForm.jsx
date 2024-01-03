@@ -42,22 +42,24 @@ const ContactForm = () => {
       <label className={css.inputForm}>
         Name
         <input
-          autoComplete="off"
+          autoComplete="name"
           type="text"
           name="name"
           className={css.inputName}
-          placeholder="e.g. John Doe"
+          placeholder="Enter name"
           required
         />
       </label>
       <label className={css.inputForm}>
         Number
         <input
-          autoComplete="off"
+          id="number"
           type="tel"
           name="number"
+          pattern="[0-9\s\-]+"
+          autoComplete="tel"
           className={css.inputNumber}
-          placeholder="e.g. 123-456-789"
+          placeholder="Enter phone number"
           required
         />
       </label>

@@ -21,11 +21,11 @@ export const fetchContacts = createAsyncThunk('contacts/fetchAll', async () => {
 
 export const addContact = createAsyncThunk(
   'contacts/addContact',
-  async ({ name, phone }) => {
+  async ({ name, phoneNumber }) => {
     try {
       const { data } = await axios.post(
         'https://6593455abb129707199085c1.mockapi.io/contacts/contacts',
-        { name, phone }
+        { name, phoneNumber }
       );
       return data;
     } catch (error) {
