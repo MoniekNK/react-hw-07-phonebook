@@ -13,7 +13,7 @@ const ContactForm = () => {
 
     const form = e.target;
     const name = form.name.value.trim();
-    const number = form.number.value.trim();
+    const phone = form.number.value.trim();
 
     const isContactExists =
       contacts.findIndex(
@@ -29,7 +29,7 @@ const ContactForm = () => {
     const newContact = {
       id: nanoid(),
       name: name,
-      number: number,
+      phone: phone,
     };
 
     dispatch(addContact(newContact));
