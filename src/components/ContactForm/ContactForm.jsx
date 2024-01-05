@@ -14,7 +14,7 @@ const ContactForm = () => {
     const form = e.target;
     const name = form.name.value.trim();
     const phone = form.number.value.trim();
-
+    console.log('Dane przed wysłaniem do API:', { name, phone });
     const isContactExists =
       contacts.findIndex(
         contact => contact.name.toLowerCase() === name.toLowerCase()
@@ -29,6 +29,7 @@ const ContactForm = () => {
     const newContact = {
       id: nanoid(),
       name: name,
+      number: phone,
       phone: phone,
     };
 
@@ -42,24 +43,22 @@ const ContactForm = () => {
       <label className={css.inputForm}>
         Name
         <input
-          autoComplete="name"
+          autoComplete="off"
           type="text"
           name="name"
           className={css.inputName}
-          placeholder="Enter name"
+          placeholder="e.g. John Doe"
           required
         />
       </label>
       <label className={css.inputForm}>
         Number
         <input
-          id="number"
+          autoComplete="off"
           type="tel"
           name="number"
-          pattern="[0-9\s\-]+"
-          autoComplete="tel"
           className={css.inputNumber}
-          placeholder="Enter phone number"
+          placeholder="e.g. 123-456-789"
           required
         />
       </label>

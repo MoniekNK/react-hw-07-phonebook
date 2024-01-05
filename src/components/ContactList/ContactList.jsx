@@ -39,10 +39,10 @@ const ContactList = () => {
         <p>Loading...</p>
       ) : (
         <ul className={css.contactsList}>
-          {filteredContacts.map(({ id, name, number }) => (
+          {filteredContacts.map(({ id, name, phone }) => (
             <li className={css.contactsItem} key={id}>
               <p className={css.contactsName}>{name}</p>
-              <p className={css.contactsNumber}>{number}</p>
+              <p className={css.contactsNumber}>{phone}</p>
               <button
                 onClick={() => {
                   handleDeleteContact(id);
